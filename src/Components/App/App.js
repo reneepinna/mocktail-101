@@ -7,11 +7,19 @@ import HomePage from '../HomePage/HomePage'
 
 function App() {
   const [drinks, setDrinks] = useState([])
-
+  const [favorites, setFavorites] = useState([])
 
   async function initializeDrinks() {
     const data = await getDrinks()
     setDrinks([data.drinks])
+  }
+
+  function toggleFavorite(drink) {
+    if (favorites.find(favorite => favorite.idDrink === drink.idDrink)) {
+      setFavorites(prev => prev.filter(favorite => favorite.idDrink !== drink.idDrink))
+    } else {
+      setFavorites(prev => [...prev, drink])
+    }
   }
 
   useEffect(() => {
@@ -50,7 +58,7 @@ function App() {
   }, [])
 
   return <Routes>
-    <Route path='/' element={<HomePage drinks={drinks} />}/>
+    <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite}/>}/>
   </Routes>
 }
 

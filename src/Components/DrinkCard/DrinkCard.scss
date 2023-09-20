@@ -1,20 +1,25 @@
-.card{
+.card {
   display: flex;
-  background-color: #495057 ;
-  border-radius: 5px;
-  max-width: 30rem;
+  background-color: #2c3137;
+  border-radius: 3px;
+  max-width: 25rem;
+  height: 7rem;
+  justify-content: start;
 }
 
 .card__thumbnail {
-  
-  height: 10rem;
-  border-radius: 5px;
+  height: 7rem;
+  border-radius: 3px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .card__textBlock {
-  
+  padding: 1rem;
 }
 
 .card__drinkName {
-  color: #dee2e6;
+  font-size: 1.4rem;
+  color: #bf6410;
+  margin: 0;
 }
