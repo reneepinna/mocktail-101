@@ -1,0 +1,20 @@
+.card{
+  display: flex;
+  background-color: #495057 ;
+  border-radius: 5px;
+  max-width: 30rem;
+}
+
+.card__thumbnail {
+  
+  height: 10rem;
+  border-radius: 5px;
+}
+
+.card__textBlock {
+  
+}
+
+.card__drinkName {
+  color: #dee2e6;
+}
