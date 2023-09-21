@@ -3,6 +3,7 @@ import { getDrinks } from '../../apiCalls'
 import './App.scss'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from '../HomePage/HomePage'
+import RecipePage from '../RecipePage/RecipePage'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
   return <Routes>
     <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/>}/>
+    <Route path='/:id' element={<RecipePage  favorites={favorites} toggleFavorite={toggleFavorite} error={error}/>} />
   </Routes>
 }
 
