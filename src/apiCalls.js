@@ -32,9 +32,10 @@ async function getRecipe(id) {
     }
 
     const data = await resp.json();
-    return cleanData(data.drinks);
-    
+    const cleanedData = cleanData(data.drinks);
+    return formatData(cleanedData)
   } catch (error) {
+
     if (error.name === 'TypeError') {
       return new Error('Oops! Something went wrong');
     }
@@ -50,6 +51,31 @@ function cleanData([data]) {
     }
     return recipe;
   }, {});
+}
+
+function formatData(data) {
+  const keys = Object.keys(data);
+
+  return keys.reduce((recipe, key) => {
+    if (key.includes('strIngredient')) {
+      recipe.ingredients.push(data[key])
+    }
+
+    if (key.includes('strMeasure')) {
+      recipe.measurements.push(data[key])
+    }
+
+    return recipe
+  }, {
+    measurements: [],
+    ingredients: [],
+    idDrink: data.idDrink,
+    strDrink: data.strDrink,
+    strDrinkThumb: data.strDrinkThumb,
+    strGlass: data.strGlass,
+    strInstructions: data.strInstructions
+  });
+
 }
 
 export { getDrinks, getRecipe };
