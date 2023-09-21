@@ -1,5 +1,3 @@
-import { getRecipe } from '../../src/apiCalls';
-
 describe('Recipe Page', () => {
   beforeEach(() => {
     cy.intercept(
@@ -22,9 +20,13 @@ describe('Recipe Page', () => {
       'https://www.thecocktaildb.com/images/media/drink/wsyvrt1468876267.jpg',
     );
     cy.get('.recipe__name').should('contain', 'Aloha Fruit punch');
-    cy.get('.recipe__ingredient').should('have.length', 7 );
-    cy.get('.recipe__ingredient').first().should('contain', 'Water')
-    cy.get('.recipe__ingredient').last().should('contain', 'Pineapple juice')
-
+    cy.get('.recipe__ingredient').should('have.length', 7);
+    cy.get('.recipe__ingredient').first().should('contain', 'Water');
+    cy.get('.recipe__ingredient').last().should('contain', 'Pineapple juice');
+    cy.get('.recipe__instructions').should(
+      'contain',
+      'Add 1/4 cup water to ginger root. Boil 3 minutes. Strain. Add the liquid to the guava, lemon and pineapple juices. Make a syrup of sugar and remaining water. Cool. Combine with juices and pineapple. Chill throroughly.'
+    );
+    cy.get('.back-btn').should('be.visible')
   });
 });

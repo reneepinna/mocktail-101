@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import './RecipePage.scss';
 import { useEffect, useState } from 'react';
 import { getRecipe } from '../../apiCalls';
@@ -30,6 +30,7 @@ function RecipePage() {
 
   return (
     <main>
+      <NavLink to='/' className='back-btn'>Back</NavLink>
       <img className='recipe__img' src={recipe.strDrinkThumb} />
       <h1 className='recipe__name'>{recipe.strDrink}</h1>
       <div className='recipe__ingredients'>{ingredients}</div>
