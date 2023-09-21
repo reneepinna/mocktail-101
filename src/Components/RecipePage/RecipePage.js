@@ -5,7 +5,7 @@ import { getRecipe } from '../../apiCalls';
 
 function RecipePage() {
   const id = useParams().id;
-  const [recipe, setRecipe] = useState({ ingredients: [], measurements: []});
+  const [recipe, setRecipe] = useState({ ingredients: [], measurements: [] });
   const [error, setError] = useState('');
 
   async function initializeRecipe() {
@@ -25,15 +25,15 @@ function RecipePage() {
   }, []);
 
   const ingredients = recipe.ingredients.map((ingredient, index) => (
-    <p>{`${recipe.measurements[index]} ${ingredient}`}</p>
+    <p className='recipe__ingredient'>{`${recipe.measurements[index]} ${ingredient}`}</p>
   ));
 
   return (
     <main>
-      <img src={recipe.strDrinkThumb} />
-      <h1>{recipe.strDrink}</h1>
-      {ingredients}
-      <p>{recipe.strInstructions}</p>
+      <img className='recipe__img' src={recipe.strDrinkThumb} />
+      <h1 className='recipe__name'>{recipe.strDrink}</h1>
+      <div className='recipe__ingredients'>{ingredients}</div>
+      <p className='recipe__instructions'>{recipe.strInstructions}</p>
     </main>
   );
 }
