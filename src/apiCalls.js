@@ -32,13 +32,24 @@ async function getRecipe(id) {
     }
 
     const data = await resp.json();
-    return data.drinks;
+    return cleanData(data.drinks);
+    
   } catch (error) {
     if (error.name === 'TypeError') {
       return new Error('Oops! Something went wrong');
     }
     return error;
   }
+}
+
+function cleanData([data]) {
+  const keys = Object.keys(data);
+  return keys.reduce((recipe, key) => {
+    if (data[key]) {
+      recipe[key] = data[key];
+    }
+    return recipe;
+  }, {});
 }
 
 export { getDrinks, getRecipe };
