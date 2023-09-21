@@ -8,9 +8,17 @@ import HomePage from '../HomePage/HomePage'
 function App() {
   const [drinks, setDrinks] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [error, setError] = useState('')
 
   async function initializeDrinks() {
     const data = await getDrinks()
+  
+    if (data.name === 'Error') {
+      setError(`${data.name}: ${data.message}`)
+      return
+    }
+
+    setError('')
     setDrinks(data)
   }
 
@@ -27,7 +35,7 @@ function App() {
   }, [])
 
   return <Routes>
-    <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite}/>}/>
+    <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/>}/>
   </Routes>
 }
 

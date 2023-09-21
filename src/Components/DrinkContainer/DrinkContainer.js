@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import DrinkCard from '../DrinkCard/DrinkCard';
 import './DrinkContainer.scss';
 
-function DrinkContainer({drinks, favorites, toggleFavorite}) {
+function DrinkContainer({drinks, favorites, toggleFavorite, error}) {
   const cards = drinks.map(drink => (
     <DrinkCard
       key={drink.idDrink}
@@ -11,7 +11,10 @@ function DrinkContainer({drinks, favorites, toggleFavorite}) {
       toggleFavorite={toggleFavorite}
     />
   ));
-  return <div className='drinkGrid'>{cards}</div>;
+  return <div className='drinkGrid'>
+    {error && <p className='error-msg'>{error}</p>}
+    {cards}
+    </div>;
 }
 
 export default DrinkContainer;
