@@ -41,4 +41,4 @@ async function getRecipe(id) {
   }
 }
 
-export { getDrinks };
+export { getDrinks, getRecipe };
