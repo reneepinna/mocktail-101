@@ -4,7 +4,7 @@ import './HomePage.scss';
 import { useEffect } from 'react';
 import banner from './banner.jpeg';
 
-function HomePage({ drinks, favorites, toggleFavorite }) {
+function HomePage({ drinks, favorites, toggleFavorite, error }) {
   return (
     <div className='homePage'>
       <article className='discover'>
@@ -16,6 +16,7 @@ function HomePage({ drinks, favorites, toggleFavorite }) {
           drinks={drinks}
           favorites={favorites}
           toggleFavorite={toggleFavorite}
+          error={error}
         />
       </main>
     </div>

@@ -1,10 +1,15 @@
-html {
-  font-size: 62.5;
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  border: 0;
-  font-size: 1.6rem;
-  font-family: 'Lato', sans-serif;
-}
+  
+  font-family: 'Montserrat', sans-serif;}
+
+$darkColor: #386641;
+$mediumColor: #6a994e;
+$lightColor: #a7c957;
+$offWhite: #e9f6e8;
+$accentColor: #bc4749;

@@ -1,0 +1,42 @@
+@import '../../index.scss';
+
+.recipe__img {
+  max-width: 100%;
+  border-radius: 3px;
+  object-fit: contain;
+
+}
+
+.page {
+  background-color: $offWhite;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  justify-content: center;
+  padding: 2rem;
+  min-height: 91vh;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 3px;
+
+  p {
+    margin: 1rem;
+  }
+}
+
+.recipe__name {
+  text-transform: capitalize;
+}
+
+.recipe-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+

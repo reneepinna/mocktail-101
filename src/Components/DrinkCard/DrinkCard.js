@@ -1,39 +1,31 @@
 import './DrinkCard.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
 function DrinkCard({ drink, favorites, toggleFavorite }) {
   const { idDrink, strDrink, strDrinkThumb } = drink;
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  function toggleIsFavorite() {
-    setIsFavorite(prev => !prev);
-  }
-
-  useEffect(() => {
-    if (favorites.find(favorite => drink.idDrink === favorite.idDrink)) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, []);
-
-  const icon = isFavorite ? faHeart : farHeart;
+  const navigate = useNavigate();
 
   return (
-    <article id={idDrink} className='card'>
+    <article
+      id={idDrink}
+      className='card'
+      onClick={e => {
+        if (typeof e.target.className === 'string' && e.target.className !== 'favorite-icon') {
+          navigate(`/${idDrink}`);
+        }
+      }}
+    >
       <img className='card__thumbnail' src={strDrinkThumb} />
       <div className='card__textBlock'>
         <h3 className='card__drinkName'>{strDrink}</h3>
-        <FontAwesomeIcon
-          icon={icon}
-          onClick={() => {
-            toggleFavorite(drink);
-            toggleIsFavorite();
-          }}
-        />
+        <div className='favorite-icon'>
+          <FavoriteIcon
+            drinkId={idDrink}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        </div>
       </div>
     </article>
   );
