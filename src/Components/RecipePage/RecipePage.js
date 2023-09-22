@@ -31,15 +31,17 @@ function RecipePage() {
       {error ? (
         <p className='error'>{error.message}</p>
       ) : (
-        <main>
+        <div className='page'>
+            <img className='recipe__img' src={recipe.strDrinkThumb} />
+          <main className='main'>
           <NavLink to='/' className='back-btn'>
             Back
           </NavLink>
-          <img className='recipe__img' src={recipe.strDrinkThumb} />
-          <h1 className='recipe__name'>{recipe.strDrink}</h1>
-          <div className='recipe__ingredients'>{ingredients}</div>
-          <p className='recipe__instructions'>{recipe.strInstructions}</p>
-        </main>
+            <h1 className='recipe__name'>{recipe.strDrink}</h1>
+            <div className='recipe__ingredients'>{ingredients}</div>
+            <p className='recipe__instructions'>{recipe.strInstructions}</p>
+          </main>
+        </div>
       )}
     </>
   );
