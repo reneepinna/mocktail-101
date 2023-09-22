@@ -4,6 +4,7 @@ import './App.scss'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from '../HomePage/HomePage'
 import RecipePage from '../RecipePage/RecipePage'
+import FavoritePage from '../FavortitePage/FavoritePage'
 
 
 function App() {
@@ -36,8 +37,9 @@ function App() {
   }, [])
 
   return <Routes>
-    <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/>}/>
+    <Route exact path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/> }/>
     <Route path='/:id' element={<RecipePage  favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+    <Route exact path='/favorites' element={<FavoritePage favorites={favorites} toggleFavorite={toggleFavorite}/>} />
     <Route path='*' />
   </Routes>
 }
