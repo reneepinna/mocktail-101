@@ -1,3 +1,5 @@
+// @import url('../../index.scss');
+
 .card {
   background-color: antiquewhite;
   max-width: 20rem;;
@@ -27,4 +29,13 @@
   font-size: 1.4rem;
   color: #bf6410;
   margin: 0;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  background-color: antiquewhite;
+  padding: .4rem;
+  border-radius: 50%;
 }
