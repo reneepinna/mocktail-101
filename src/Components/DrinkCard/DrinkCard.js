@@ -19,11 +19,13 @@ function DrinkCard({ drink, favorites, toggleFavorite }) {
       <img className='card__thumbnail' src={strDrinkThumb} />
       <div className='card__textBlock'>
         <h3 className='card__drinkName'>{strDrink}</h3>
-        <FavoriteIcon
-          drinkId={idDrink}
-          favorites={favorites}
-          toggleFavorite={toggleFavorite}
-        />
+        <div className='favorite-icon'>
+          <FavoriteIcon
+            drinkId={idDrink}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+          />
+        </div>
       </div>
     </article>
   );

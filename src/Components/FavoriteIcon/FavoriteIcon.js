@@ -23,6 +23,7 @@ function FavoriteIcon({ favorites, toggleFavorite, drinkId }) {
 
   return (
     <FontAwesomeIcon
+      color='#08a045'
       className='favorite-icon'
       icon={icon}
       onClick={() => {
