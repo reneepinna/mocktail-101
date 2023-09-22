@@ -11,7 +11,7 @@ function DrinkCard({ drink, favorites, toggleFavorite }) {
       id={idDrink}
       className='card'
       onClick={e => {
-        if (typeof e.target.className === 'string') {
+        if (typeof e.target.className === 'string' && e.target.className !== 'favorite-icon') {
           navigate(`/${idDrink}`);
         }
       }}

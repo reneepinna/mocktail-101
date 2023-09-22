@@ -1,21 +1,20 @@
-// @import url('../../index.scss');
+@import '../../index.scss';
 
 .card {
-  background-color: antiquewhite;
-  max-width: 20rem;;
+  background-color: white;
+  max-width: 25rem;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
   position: relative;
   cursor: pointer;
-
   &:hover {
-    border: solid green 2px;
+    border: solid $mediumColor 2px;
   }
 }
 
 .card__thumbnail {
-  max-height: 20rem;
+  max-height: 25rem;
   border-radius: 3px;
   object-fit: contain;
   object-position: center;
@@ -27,15 +26,22 @@
 
 .card__drinkName {
   font-size: 1.4rem;
-  color: #bf6410;
+  color: $darkColor;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .favorite-icon {
   position: absolute;
   top: .5rem;
   right: .5rem;
-  background-color: antiquewhite;
+  background-color: $offWhite;
   padding: .4rem;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 545px) {
+  .card {
+    justify-self: center;
+  }
 }

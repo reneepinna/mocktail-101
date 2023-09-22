@@ -1,14 +1,16 @@
+@import '../../index.scss';
+
 .homePage {
-  // background-color:  #1a1e22 ;
-  background-color: #fcf9f0;
+  background-color: $offWhite;
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .heading {
-  color: #BF6410;
+  color: $darkColor;
   text-decoration: underline;
   margin: 0;
 }
@@ -17,9 +19,7 @@
   max-width: 100%;
 }
 
-
 .banner-img {
-
   max-height: 50vh ;
   width: 100vw;
   object-fit: cover;
