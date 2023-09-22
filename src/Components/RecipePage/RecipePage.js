@@ -10,12 +10,10 @@ function RecipePage() {
 
   async function initializeRecipe() {
     const data = await getRecipe(id);
-
-    if (data.hasOwnProperty('name')) {
+    if (data.name === 'Error') {
       setError(data);
       return;
     }
-
     setError('');
     setRecipe(data);
   }
@@ -29,13 +27,21 @@ function RecipePage() {
   ));
 
   return (
-    <main>
-      <NavLink to='/' className='back-btn'>Back</NavLink>
-      <img className='recipe__img' src={recipe.strDrinkThumb} />
-      <h1 className='recipe__name'>{recipe.strDrink}</h1>
-      <div className='recipe__ingredients'>{ingredients}</div>
-      <p className='recipe__instructions'>{recipe.strInstructions}</p>
-    </main>
+    <>
+      {error ? (
+        <p className='error'>{error.message}</p>
+      ) : (
+        <main>
+          <NavLink to='/' className='back-btn'>
+            Back
+          </NavLink>
+          <img className='recipe__img' src={recipe.strDrinkThumb} />
+          <h1 className='recipe__name'>{recipe.strDrink}</h1>
+          <div className='recipe__ingredients'>{ingredients}</div>
+          <p className='recipe__instructions'>{recipe.strInstructions}</p>
+        </main>
+      )}
+    </>
   );
 }
 
