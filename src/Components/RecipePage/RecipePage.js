@@ -12,7 +12,7 @@ function RecipePage({ favorites, toggleFavorite }) {
   const navigate = useNavigate()
 
   async function initializeRecipe() {
-    const regex = new RegExp('[1-9]{1,6}$');
+    const regex = new RegExp('[0-9]{1,6}$');
     if (!regex.test(id)) {
       navigate('/error')
     }

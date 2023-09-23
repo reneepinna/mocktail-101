@@ -1,4 +1,5 @@
 import './ErrorPage.scss'
+import sour from './sour.jpg'
 
 function ErrorPage() {
   return <div className="error-page">
