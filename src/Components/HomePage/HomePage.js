@@ -1,7 +1,7 @@
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import './HomePage.scss';
 import banner from './banner.jpeg';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function HomePage({ drinks, favorites, toggleFavorite, error }) {
   return (

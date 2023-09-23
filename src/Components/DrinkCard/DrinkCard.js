@@ -1,7 +1,7 @@
 import './DrinkCard.scss';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function DrinkCard({ drink, favorites, toggleFavorite }) {
   const { idDrink, strDrink, strDrinkThumb } = drink;
@@ -11,7 +11,10 @@ function DrinkCard({ drink, favorites, toggleFavorite }) {
       id={idDrink}
       className='card'
       onClick={e => {
-        if (typeof e.target.className === 'string' && e.target.className !== 'favorite-icon') {
+        if (
+          typeof e.target.className === 'string' &&
+          e.target.className !== 'favorite-icon'
+        ) {
           navigate(`/${idDrink}`);
         }
       }}
@@ -37,8 +40,8 @@ DrinkCard.propTypes = {
   drink: PropTypes.shape({
     idDrink: PropTypes.string.isRequired,
     strDrink: PropTypes.string.isRequired,
-    strDrinkThumb: PropTypes.string.isRequired
+    strDrinkThumb: PropTypes.string.isRequired,
   }).isRequired,
   favorites: PropTypes.arrayOf(PropTypes.object).isRequired,
-  toggleFavorite: PropTypes.func.isRequired
-}
+  toggleFavorite: PropTypes.func.isRequired,
+};

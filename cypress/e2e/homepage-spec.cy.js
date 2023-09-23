@@ -15,7 +15,7 @@ describe('homepage', () => {
       'src',
       '/static/media/banner.95d057bd9ddd70d99cb9.jpeg',
     );
-    cy.get('.heading').should('contain', 'Discover')
+    cy.get('.heading').should('contain', 'Discover');
     cy.fixture('drinks.json')
       .its('drinks')
       .then(drinks => {
