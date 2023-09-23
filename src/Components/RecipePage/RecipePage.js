@@ -5,6 +5,7 @@ import { getRecipe } from '../../apiCalls';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types'
 
 function RecipePage({ favorites, toggleFavorite, drinks}) {
   const id = useParams().id;
@@ -62,3 +63,21 @@ function RecipePage({ favorites, toggleFavorite, drinks}) {
 }
 
 export default RecipePage;
+
+RecipePage.propTypes = {
+  drinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string,
+      strDrink: PropTypes.string,
+      strDrinkThumb: PropTypes.string,
+    }),
+  ),
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.number,
+      strDrink: PropTypes.string,
+      strDrinkThumb: PropTypes.string,
+    }),
+  ).isRequired,
+  toggleFavorite: PropTypes.func.isRequired
+}
