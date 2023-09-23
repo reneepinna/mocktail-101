@@ -29,4 +29,23 @@ describe('homepage', () => {
         });
       });
   });
+
+  it('should allow the user to add or remove favorites', () => {
+    cy.visit('/');
+    cy.wait('@getDrinks');
+    cy.get('#12560 .favorite-icon').click();
+    cy.get('.link').last().click();
+    cy.location('pathname').should('eq', '/favorites');
+    cy.get('.drinkGrid')
+      .should('have.length', 1)
+      .should('contain', 'Afterglow');
+    cy.get('.link').first().click();
+    cy.location('pathname').should('eq', '/');
+    cy.get('#12560 .favorite-icon').click();
+    cy.get('.link').last().click();
+    cy.location('pathname').should('eq', '/favorites');
+    cy.get('.card')
+      .should('not.exist')
+    cy.get('.no-favorites').should('be.visible')
+  });
 });

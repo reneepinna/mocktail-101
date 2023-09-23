@@ -1,4 +1,3 @@
-import './FavoriteIcon.scss';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +21,7 @@ function FavoriteIcon({ favorites, toggleFavorite, drink }) {
 
   const icon = isFavorite ? faHeart : farHeart;
 
-  return (
+  return (<div className='favorite-i'>
     <FontAwesomeIcon
       size='xl'
       color='#386641'
@@ -32,6 +31,7 @@ function FavoriteIcon({ favorites, toggleFavorite, drink }) {
         toggleIsFavorite();
       }}
     />
+    </div>
   );
 }
 

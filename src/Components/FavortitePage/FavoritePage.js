@@ -32,5 +32,5 @@ FavoritePage.propTypes = {
       strDrinkThumb: PropTypes.string,
     }),
   ).isRequired,
-  toggleFavorites: PropTypes.func.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
 };
