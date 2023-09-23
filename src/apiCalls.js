@@ -35,7 +35,6 @@ async function getRecipe(id) {
     const cleanedData = cleanData(data.drinks);
     return formatData(cleanedData)
   } catch (error) {
-
     if (error.name === 'TypeError') {
       return new Error('Oops! Something went wrong');
     }

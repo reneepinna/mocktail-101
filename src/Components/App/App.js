@@ -4,6 +4,9 @@ import './App.scss'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from '../HomePage/HomePage'
 import RecipePage from '../RecipePage/RecipePage'
+import FavoritePage from '../FavortitePage/FavoritePage'
+import ErrorPage from '../ErrorPage/ErrorPage'
+import NavBar from '../NavBar/NavBar'
 
 
 function App() {
@@ -35,11 +38,16 @@ function App() {
     initializeDrinks()
   }, [])
 
-  return <Routes>
-    <Route path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/>}/>
+  return <>
+  <NavBar />
+  <Routes>
+    <Route exact path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/> }/>
+    <Route path='/error' element={<ErrorPage/>} />
+    <Route exact path='/favorites' element={<FavoritePage favorites={favorites} toggleFavorite={toggleFavorite}/>} />
     <Route path='/:id' element={<RecipePage  favorites={favorites} toggleFavorite={toggleFavorite}/>} />
-    <Route path='*' />
+    <Route path='*' element={<ErrorPage/>}/>
   </Routes>
+  </>
 }
 
 export default App
