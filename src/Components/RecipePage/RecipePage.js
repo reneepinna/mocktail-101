@@ -6,10 +6,11 @@ import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-function RecipePage({ favorites, toggleFavorite }) {
+function RecipePage({ favorites, toggleFavorite, drinks}) {
   const id = useParams().id;
   const [recipe, setRecipe] = useState({ ingredients: [], measurements: [] });
   const navigate = useNavigate()
+  
 
   async function initializeRecipe() {
     const regex = new RegExp('[0-9]{1,6}$');
@@ -27,6 +28,8 @@ function RecipePage({ favorites, toggleFavorite }) {
   }
 
   useEffect(() => {
+
+    
     initializeRecipe();
   }, []);
 
@@ -43,7 +46,7 @@ function RecipePage({ favorites, toggleFavorite }) {
               <FontAwesomeIcon icon={faArrowLeft} size='xl' />
             </NavLink>
               <FavoriteIcon
-                drinkId={id}
+                drink={drinks.find(drink => drink.idDrink === id)}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
                 />

@@ -26,11 +26,11 @@ function App() {
     setDrinks(data)
   }
 
-  function toggleFavorite(drinkId) {
-    if (favorites.find(favoriteId => favoriteId === drinkId)) {
-      setFavorites(prev => prev.filter(favoriteId => favoriteId !== drinkId))
+  function toggleFavorite(drink) {
+    if (favorites.find(favorite => favorite.idDrink === drink.idDrink)) {
+      setFavorites(prev => prev.filter(favorite => favorite.idDrink !== drink.idDrink))
     } else {
-      setFavorites(prev => [...prev, drinkId])
+      setFavorites(prev => [...prev, drink])
     }
   }
 
@@ -44,7 +44,7 @@ function App() {
     <Route exact path='/' element={<HomePage drinks={drinks} favorites={favorites} toggleFavorite={toggleFavorite} error={error}/> }/>
     <Route path='/error' element={<ErrorPage/>} />
     <Route exact path='/favorites' element={<FavoritePage favorites={favorites} toggleFavorite={toggleFavorite}/>} />
-    <Route path='/:id' element={<RecipePage  favorites={favorites} toggleFavorite={toggleFavorite}/>} />
+    <Route path='/:id' element={<RecipePage  favorites={favorites} toggleFavorite={toggleFavorite} drinks={drinks}/>} />
     <Route path='*' element={<ErrorPage/>}/>
   </Routes>
   </>

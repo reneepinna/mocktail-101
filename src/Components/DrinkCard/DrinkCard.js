@@ -5,7 +5,6 @@ import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 function DrinkCard({ drink, favorites, toggleFavorite }) {
   const { idDrink, strDrink, strDrinkThumb } = drink;
   const navigate = useNavigate();
-
   return (
     <article
       id={idDrink}
@@ -21,7 +20,7 @@ function DrinkCard({ drink, favorites, toggleFavorite }) {
         <h3 className='card__drinkName'>{strDrink}</h3>
         <div className='favorite-icon'>
           <FavoriteIcon
-            drinkId={idDrink}
+            drink={drink}
             favorites={favorites}
             toggleFavorite={toggleFavorite}
           />

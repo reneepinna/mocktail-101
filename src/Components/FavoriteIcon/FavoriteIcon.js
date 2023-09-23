@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-function FavoriteIcon({ favorites, toggleFavorite, drinkId }) {
+function FavoriteIcon({ favorites, toggleFavorite, drink }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   function toggleIsFavorite() {
@@ -12,7 +12,7 @@ function FavoriteIcon({ favorites, toggleFavorite, drinkId }) {
   }
 
   useEffect(() => {
-    if (favorites.find(favoriteId => drinkId === favoriteId)) {
+    if (favorites.find(favorite => drink.idDrink === favorite.idDrink)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
@@ -24,10 +24,10 @@ function FavoriteIcon({ favorites, toggleFavorite, drinkId }) {
   return (
     <FontAwesomeIcon
       size='xl'
-      color='#08a045'
+      color='#386641'
       icon={icon}
       onClick={() => {
-        toggleFavorite(drinkId);
+        toggleFavorite(drink);
         toggleIsFavorite();
       }}
     />
