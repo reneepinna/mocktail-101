@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import './RecipePage.scss';
 import { useEffect, useState } from 'react';
 import { getRecipe } from '../../apiCalls';
@@ -9,15 +9,20 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 function RecipePage({ favorites, toggleFavorite }) {
   const id = useParams().id;
   const [recipe, setRecipe] = useState({ ingredients: [], measurements: [] });
-  const [error, setError] = useState('');
+  const navigate = useNavigate()
 
   async function initializeRecipe() {
-    const data = await getRecipe(id);
-    if (data.name === 'Error') {
-      setError(data);
-      return;
+    const regex = new RegExp('[1-9]{1,6}$');
+    if (!regex.test(id)) {
+      navigate('/error')
     }
-    setError('');
+
+    const data = await getRecipe(id);
+
+    if (data.name === 'SyntaxError' || data.name === 'Error') {
+      navigate('/error')
+    }
+
     setRecipe(data);
   }
 
@@ -30,10 +35,6 @@ function RecipePage({ favorites, toggleFavorite }) {
   ));
 
   return (
-    <>
-      {error ? (
-        <p className='error'>{error.message}</p>
-      ) : (
         <div className='page'>
             <img className='recipe__img' src={recipe.strDrinkThumb} />
           <main className='main'>
@@ -52,8 +53,8 @@ function RecipePage({ favorites, toggleFavorite }) {
             <p className='recipe__instructions'>{recipe.strInstructions}</p>
           </main>
         </div>
-      )}
-    </>
+
+
   );
 }
 

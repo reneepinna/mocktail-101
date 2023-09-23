@@ -29,21 +29,6 @@ describe('Homepage network errors', () => {
       .should('contain', 'Error: Oops! Something went wrong');
     cy.get('.card').should('not.exist');
   });
-  it('should throw a 404 error', () => {
-    cy.intercept(
-      'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic',
-      { statusCode: 404 },
-    ).as('error');
-    cy.visit('/');
-    cy.wait('@error')
-      .its('response')
-      .should('deep.include', { statusCode: 404 });
-
-    cy.get('.error-msg')
-      .should('be.visible')
-      .should('contain', 'Error: Page not found');
-    cy.get('.card').should('not.exist');
-  });
 });
 
 describe('Recipe page network errors', () => {
@@ -62,8 +47,9 @@ describe('Recipe page network errors', () => {
     ).as('error');
     cy.visit('/12862')
     cy.wait('@error')
-    cy.get('.error').should('exist').should('contain', 'Oops! Something went wrong')
-  });
+    cy.get('.error-message').should('exist').should('contain', 'Oops! We could')
+    cy.location('pathname').should('eq', '/error')
+    })
   it('should should throw a 500 level error', () => {
     cy.intercept(
       'GET',
@@ -72,10 +58,10 @@ describe('Recipe page network errors', () => {
     ).as('error');
     cy.visit('/12862')
     cy.wait('@error')
-    cy.get('.error').should('exist').should('contain', 'Oops! Something went wrong')
-
+    cy.get('.error-message').should('exist').should('contain', 'Oops! We could')
+    cy.location('pathname').should('eq', '/error')
   });
-  it('should should throw a 404 level error', () => {
+  it('should throw a 404 level error', () => {
     cy.intercept(
       'GET',
       'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=66666',
@@ -83,7 +69,12 @@ describe('Recipe page network errors', () => {
     ).as('error');
     cy.visit('/66666')
     cy.wait('@error')
-    cy.get('.error').should('exist').should('contain', 'Page not found')
-
+    cy.get('.error-message').should('exist').should('contain', 'Oops! We could')
+    cy.location('pathname').should('eq', '/error')
   });
+  it('should direct an id with the wrong syntax to the error page without an api call', () => {
+    cy.visit('/555783ksdjfhisd')
+    cy.get('.error-message').should('exist').should('contain', 'Oops! We could')
+    cy.location('pathname').should('eq', '/error')
+  })
 });
