@@ -1,11 +1,17 @@
-import { NavLink } from 'react-router-dom'
-import './NavBar.scss'
+import { NavLink } from 'react-router-dom';
+import './NavBar.scss';
 
 function NavBar() {
-  return <nav className='navBar'>
-    <NavLink className='link' to='/'>Home</NavLink>
-    <NavLink className='link' to='/favorites'>Favorites</NavLink>
-  </nav>
+  return (
+    <nav className='navBar'>
+      <NavLink className='link' to='/'>
+        Home
+      </NavLink>
+      <NavLink className='link' to='/favorites'>
+        Favorites
+      </NavLink>
+    </nav>
+  );
 }
 
-export default NavBar
+export default NavBar;

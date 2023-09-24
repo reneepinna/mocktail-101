@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import './HomePage.scss';
-import { useEffect } from 'react';
 import banner from './banner.jpeg';
+import PropTypes from 'prop-types';
 
 function HomePage({ drinks, favorites, toggleFavorite, error }) {
   return (
@@ -24,3 +23,22 @@ function HomePage({ drinks, favorites, toggleFavorite, error }) {
 }
 
 export default HomePage;
+
+HomePage.propTypes = {
+  drinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.string,
+      strDrink: PropTypes.string,
+      strDrinkThumb: PropTypes.string,
+    }),
+  ),
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      idDrink: PropTypes.number,
+      strDrink: PropTypes.string,
+      strDrinkThumb: PropTypes.string,
+    }),
+  ).isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
