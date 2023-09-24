@@ -1,4 +1,4 @@
-# Travelr
+# Mocktail 101
 
 ## 💡 Abstract
 Mocktail 101 is a mocktail recipe application. It allows the user quick and easy access to their favorite drinks through the favorites tab.
