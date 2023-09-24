@@ -7,6 +7,7 @@ Visit the app
 
 ## 📷 Preview of App:
 Preview of the application
+![Mocktail101Gif](https://github.com/reneepinna/mocktail-101/assets/130389530/8af0ff43-636b-4030-9a85-4a8ca445b42f)
 
 
 ## 💻 Technologies Used
