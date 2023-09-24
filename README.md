@@ -3,7 +3,7 @@
 ## 💡 Abstract
 Mocktail 101 is a mocktail recipe application. It allows the user quick and easy access to their favorite drinks through the favorites tab.
 
-Visit the app
+Visit the app [here](https://mocktail-101.vercel.app/)!
 
 ## 📷 Preview of App:
 Preview of the application
